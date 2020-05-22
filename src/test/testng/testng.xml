@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="SystemTest" preserve-order="true">
+    <suite-files>
+        <suite-file path="login.xml"></suite-file>
+        <!-- <suite-file path="overduedelaypayment.xml"></suite-file>
+        <suite-file path="normalpayment.xml"></suite-file>
+        <suite-file path="overduepayment.xml"></suite-file>
+        <suite-file path="prepayment.xml"></suite-file>  -->
+    </suite-files>
+</suite>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="登录流程">
+    <listeners>
+        <listener class-name="com.pku.base.Listener"/>
+    </listeners>
+
+    <!--<test name="登录" preserve-order="true">-->
+        <!--&lt;!&ndash; 这里是要调试的测试类  &ndash;&gt;-->
+        <!--<classes>-->
+            <!--<class name="com.pku.testcases.TestLogin"/>-->
+        <!--</classes>-->
+    <!--</test>-->
+
+    <test name="登录">
+
+        <classes>
+            <class name="com.pku.testcases.TestLogin"/>
+        </classes>
+    </test>
+
+</suite>

@@ -1,0 +1,24 @@
+2020-05-21 13:45:38 [INFO] =======================================================
+2020-05-21 13:45:38 [INFO]                     开始测试  TestLogin
+2020-05-21 13:45:38 [INFO] =======================================================
+2020-05-21 13:45:38 [INFO] 打开首页
+2020-05-21 13:48:46 [INFO] 点击登录按钮，跳转至登录页面
+2020-05-21 13:48:51 [INFO] =======================================================
+2020-05-21 13:48:51 [INFO] 测试方法 testLogin 执行失败, 请参考
+2020-05-21 13:48:51 [INFO] screenshot 文件夹中的 testLogin_0521134851.jpg 
+2020-05-21 13:48:51 [INFO] 失败原因为：Element not found {By.id: newloginbtn}
+Expected: visible or transparent: visible or have css value opacity=0
+Page source: file:/C:/Users/User/.jenkins/workspace/javaWebUITestScript/pkulaw/build/reports/tests/1590040131186.0.html
+Timeout: 4 s.
+Caused by: NoSuchWindowException: no such window: target window already closed
+2020-05-21 13:48:51 [INFO] =======================================================
+2020-05-21 13:48:51 [INFO] =======================================================
+2020-05-21 13:48:51 [INFO] 测试方法 testLogin 执行失败, 请参考
+2020-05-21 13:48:51 [INFO] screenshot 文件夹中的 testLogin_0521134851.jpg 
+2020-05-21 13:48:51 [INFO] 失败原因为：Element not found {By.id: newloginbtn}
+Expected: visible or transparent: visible or have css value opacity=0
+Page source: file:/C:/Users/User/.jenkins/workspace/javaWebUITestScript/pkulaw/build/reports/tests/1590040131186.0.html
+Timeout: 4 s.
+Caused by: NoSuchWindowException: no such window: target window already closed
+2020-05-21 13:48:51 [INFO] =======================================================
+2020-05-21 13:48:51 [INFO] 删除所有测试项目: []
