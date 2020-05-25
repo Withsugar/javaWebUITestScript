@@ -16,6 +16,16 @@
 
 
     <dependencies>
+        <!--<dependency>-->
+            <!--<groupId>org.seleniumhq.selenium</groupId>-->
+            <!--<artifactId>selenium-java</artifactId>-->
+            <!--<version>4.0.0-alpha-5</version>-->
+        <!--</dependency>-->
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>2.13.3</version>
+        </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
@@ -59,7 +69,6 @@
 
     </dependencies>
 
-
     <build>
         <plugins>
             <plugin>
@@ -83,17 +92,12 @@
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
-                    <systemPropertyVariables>
-                        <!--是否忽略html，解释见下图。与之后在reportNg报告上显示截图相关。当前已经使用allure了，这里可以直接去掉啦-->
-                        <org.uncommons.reportng.escape-output>false</org.uncommons.reportng.escape-output>
-                    </systemPropertyVariables>
                     <!--测试失败后，是否忽略并继续测试-->
                     <testFailureIgnore>true</testFailureIgnore>
                     <suiteXmlFiles>
                         <!--代表的是要执行的测试套件名称-->
                         <suiteXmlFile>src/test/testng/testng.xml</suiteXmlFile>
                     </suiteXmlFiles>
-                    <!-- <workingDirectory>target\</workingDirectory> -->
                 </configuration>
                 <dependencies>
                     <dependency>
