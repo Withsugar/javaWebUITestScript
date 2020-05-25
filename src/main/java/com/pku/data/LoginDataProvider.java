@@ -2,7 +2,7 @@ package com.pku.data;
 
 import org.testng.annotations.DataProvider;
 
-public class StaticProvider {
+public class LoginDataProvider {
     @DataProvider(name = "loginFailData")
     public static Object[][] loginFailData() {
         return new Object[][]{
