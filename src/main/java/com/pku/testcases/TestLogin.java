@@ -46,11 +46,6 @@ public class TestLogin extends TestBase {
         info("开始登录");
         page(LoginPage.class).login(userName,password);
         Assert.assertEquals(excepted,page(LoginPage.class).getAccountMessage());
-    }
-
-    @Feature("退出测试")
-    @Test(priority = 2,dependsOnMethods = {"testLogin"})
-    public void testLogout(String userName,String password,String excepted){
 
         info("退出登录");
         page(LoginPage.class).logout();
@@ -58,6 +53,18 @@ public class TestLogin extends TestBase {
         Assert.assertEquals("登录",page(HomePage.class).getLoginBtnName());
         info("退出断言成功");
     }
+
+//    下面的方式在jenkins上会导致构建不稳定，顾修改回上面的方式
+//    @Feature("退出测试")
+//    @Test(priority = 2,dependsOnMethods = {"testLogin"})
+//    public void testLogout(String userName,String password,String excepted){
+//
+//        info("退出登录");
+//        page(LoginPage.class).logout();
+//        //断言
+//        Assert.assertEquals("登录",page(HomePage.class).getLoginBtnName());
+//        info("退出断言成功");
+//    }
 
 
 }
