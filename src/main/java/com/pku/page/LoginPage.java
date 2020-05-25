@@ -14,6 +14,19 @@ public class LoginPage {
     }
 
 
+    public static String getErrorMessage(){
+        return $(By.id("pwdTips")).getText();
+    }
+
+    //用户名为空，点击登录的错误提示信息
+    public static String getAccountErrorMessage(){
+        return $(By.id("userTips")).getText();
+    }
+
+    //登录成功后，展示用户名的信息
+    public static String getAccountMessage(){
+        return $(By.className("user-name")).getText();
+    }
 
     public void logout() {
         $(By.className("exit")).click();

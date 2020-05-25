@@ -1,10 +1,13 @@
 package com.pku.base;
 
+import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.WebDriverRunner;
 import com.codeborne.selenide.testng.ScreenShooter;
 import org.apache.log4j.FileAppender;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.assertj.db.type.Source;
+import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
@@ -28,9 +31,17 @@ public class TestBase {
     public static Source source = null;
     public static ArrayList<String> proList = new ArrayList<String>();//存储所有测试过程中创建的项目Id，用于测试后删除项目
 
+    public WebDriver getDriver(){
+        return WebDriverRunner.getWebDriver();
+    }
+
     @BeforeSuite
     public void init() {
-        ScreenShooter.captureSuccessfulTests=true;//设为true时，不管用例成功失败都截图，false时，只有失败时才会截图
+        System.setProperty("webdriver.chrome.driver", "src//main//resources//chromedriver.exe");
+        System.setProperty("selenide.browser", "Chrome");
+        Configuration.startMaximized=true;
+        Configuration.screenshots=true;
+        ScreenShooter.captureSuccessfulTests=false;//设为true时，不管用例成功失败都截图，false时，只有失败时才会截图
 
         initConfig();
         initLogger();
@@ -41,7 +52,7 @@ public class TestBase {
     @AfterSuite(alwaysRun = true)
     public void log() {
         new LogBase().writeLog(Listener.result, config.getProperty("reportName"));
-        info("删除所有测试项目: " + proList);
+//        info("删除所有测试项目: " + proList);
 //		ProjectService.getInstance().deleteAllProject(proList,config);
     }
 

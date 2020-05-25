@@ -1,5 +1,9 @@
 package com.pku.base;
 
+import io.qameta.allure.Attachment;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestNGMethod;
 import org.testng.ITestResult;
@@ -19,23 +23,53 @@ public class Listener extends TestListenerAdapter {
 
 	@Override
 	public void onTestFailure(ITestResult tr) {
-		super.onTestFailure(tr);
+        super.onTestFailure(tr);
+//        TestBase bt = (TestBase) tr.getInstance();
+//        System.out.println("====================print"+bt);
+//        WebDriver driver = bt.getDriver();
+//        takePhoto(driver);
+//        logCaseStep(tr);
+//        exceptedResult(tr);
+
+
+//		super.onTestFailure(tr);
 		SimpleDateFormat df = new SimpleDateFormat("MMddHHmmss");
 		jpgName = tr.getName()+"_"+df.format(new Date()).toString();
 		//收集log
 		setLog(tr,"失败");
-		//截图
 
-		//String name = tr.getName()+"_"+df.format(new Date()).toString();
-
-
-		//TestBase.driver.screenShot(jpgName);
 		TestBase.info("=======================================================");
 		TestBase.info("测试方法 "+tr.getName()+" 执行失败, 请参考");
-		TestBase.info("screenshot 文件夹中的 " +jpgName+".jpg ");
+		TestBase.info("失败截图参照 screenshot 文件夹中的 " +jpgName+".jpg ");
 		TestBase.info("失败原因为："+tr.getThrowable().getMessage());
 		TestBase.info("=======================================================");
 	}
+
+    @Attachment(value = "失败截图如下：",type = "screenshot")
+    public byte[]  takePhoto(WebDriver driver){
+        byte[] screenshotAs = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
+        return screenshotAs;
+    }
+
+    /**
+     * 打印测试步骤
+     * @param tr
+     */
+    @Attachment(value = "操作步骤如下：")
+    public String logCaseStep(ITestResult tr){
+        String step = "1、打开浏览器  2、输入百度地址";
+        return step;
+    }
+
+    /**
+     * 打印测试步骤
+     * @param tr
+     */
+    @Attachment(value = "期望结果如下：")
+    public String exceptedResult(ITestResult tr){
+        String result = "显示查询结果";
+        return result;
+    }
 
     @Override
     public void onTestSkipped(ITestResult tr) {
