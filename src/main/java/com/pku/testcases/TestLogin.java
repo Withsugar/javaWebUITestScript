@@ -4,6 +4,7 @@ import com.pku.base.TestBase;
 import com.pku.data.StaticProvider;
 import com.pku.page.HomePage;
 import com.pku.page.LoginPage;
+import io.qameta.allure.Feature;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import static com.codeborne.selenide.Selenide.*;
@@ -11,7 +12,8 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class TestLogin extends TestBase {
 
-    @Test(description = "登录反用例测试",dataProvider = "loginFailData",dataProviderClass = StaticProvider.class)
+    @Feature("登录反用例测试")
+    @Test(dataProvider = "loginFailData",dataProviderClass = StaticProvider.class)
     public void testLoginFail(String userName,String password,String excepted){
         String actualMessage="";
         info("===开始打印参数==============");
@@ -35,7 +37,8 @@ public class TestLogin extends TestBase {
 
     }
 
-    @Test(description = "登录退出测试",dataProvider = "loginData",dataProviderClass = StaticProvider.class)
+    @Feature("登录退出测试")
+    @Test(dataProvider = "loginData",dataProviderClass = StaticProvider.class)
     public void testLogin(String userName,String password,String excepted){
 
         info("打开首页");
