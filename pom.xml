@@ -98,6 +98,13 @@
                         <!--代表的是要执行的测试套件名称-->
                         <suiteXmlFile>src/test/testng/testng.xml</suiteXmlFile>
                     </suiteXmlFiles>
+                    <!--生成allure-result的目录-->
+                    <systemProperties>
+                        <property>
+                            <name>allure.results.directory</name>
+                            <value>allure-results</value>
+                        </property>
+                    </systemProperties>
                 </configuration>
                 <dependencies>
                     <dependency>

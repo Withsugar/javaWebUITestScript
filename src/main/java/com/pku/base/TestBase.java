@@ -3,6 +3,8 @@ package com.pku.base;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
 import com.codeborne.selenide.testng.ScreenShooter;
+import com.pku.page.HomePage;
+import com.pku.page.LoginPage;
 import org.apache.log4j.FileAppender;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
@@ -21,6 +23,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Properties;
+
+import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.page;
 
 @Listeners({Listener.class})
 public class TestBase {
@@ -154,5 +159,15 @@ public class TestBase {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * 除登录测试外，其他测试前的登录操作
+     */
+    public static void login(){
+        info("登录");
+        HomePage homePage=open(config.getProperty("webSite"), HomePage.class);
+        homePage.loginBtn();
+        page(LoginPage.class).login(config.getProperty("username"),config.getProperty("password"));
     }
 }

@@ -1,7 +1,7 @@
 package com.pku.testcases;
 
 import com.pku.base.TestBase;
-import com.pku.data.StaticProvider;
+import com.pku.data.LoginDataProvider;
 import com.pku.page.HomePage;
 import com.pku.page.LoginPage;
 import io.qameta.allure.Feature;
@@ -13,11 +13,9 @@ import static com.codeborne.selenide.Selenide.*;
 public class TestLogin extends TestBase {
 
     @Feature("登录反用例测试")
-    @Test(dataProvider = "loginFailData",dataProviderClass = StaticProvider.class)
+    @Test(priority = 0,dataProvider = "loginFailData",dataProviderClass = LoginDataProvider.class)
     public void testLoginFail(String userName,String password,String excepted){
         String actualMessage="";
-        info("===开始打印参数==============");
-        info("userName="+userName+"==========="+"password="+password+"========="+"excepted="+excepted+"=========");
         info("打开首页");
         HomePage homePage=open(config.getProperty("webSite"), HomePage.class);
         info("点击登录按钮，跳转至登录页面");
@@ -32,13 +30,12 @@ public class TestLogin extends TestBase {
         }else{
             actualMessage=page(LoginPage.class).getErrorMessage();
         }
-        info("actualMessage=="+actualMessage);
         Assert.assertEquals(excepted,actualMessage);
 
     }
 
-    @Feature("登录退出测试")
-    @Test(dataProvider = "loginData",dataProviderClass = StaticProvider.class)
+    @Feature("登录测试")
+    @Test(priority = 1,dataProvider = "loginData",dataProviderClass = LoginDataProvider.class)
     public void testLogin(String userName,String password,String excepted){
 
         info("打开首页");
@@ -49,14 +46,18 @@ public class TestLogin extends TestBase {
         info("开始登录");
         page(LoginPage.class).login(userName,password);
         Assert.assertEquals(excepted,page(LoginPage.class).getAccountMessage());
+    }
+
+    @Feature("退出测试")
+    @Test(priority = 2,dependsOnMethods = {"testLogin"})
+    public void testLogout(String userName,String password,String excepted){
 
         info("退出登录");
         page(LoginPage.class).logout();
         //断言
-        Assert.assertEquals("登录",homePage.getLoginBtnName());
+        Assert.assertEquals("登录",page(HomePage.class).getLoginBtnName());
         info("退出断言成功");
-
-
     }
+
 
 }
