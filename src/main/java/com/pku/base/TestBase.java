@@ -137,7 +137,7 @@ public class TestBase {
         try {
             ip = java.net.InetAddress.getLocalHost().getHostAddress();
             String lPath = System.getProperty("user.dir")
-                    + "//log//" + fileName + "//" + ip;
+                    + "//log//" + fileName;
             File tmp = new File(lPath);
             if (!tmp.getAbsoluteFile().exists()) {
                 tmp.getAbsoluteFile().mkdirs();

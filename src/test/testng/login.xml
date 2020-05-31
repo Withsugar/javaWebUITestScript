@@ -16,6 +16,7 @@
     <test name="登录">
         <classes>
             <class name="com.pku.testcases.TestLogin"/>
+            <class name="com.pku.testcases.MessageBuilderTests"/>
         </classes>
     </test>
 
