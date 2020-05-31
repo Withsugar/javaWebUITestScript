@@ -4,7 +4,8 @@ import com.pku.base.TestBase;
 import com.pku.page.MessageBuilder;
 import org.testng.annotations.Test;
 
-import static org.junit.Assert.*;
+import static org.testng.Assert.assertEquals;
+
 
 public class MessageBuilderTests  extends TestBase {
 
