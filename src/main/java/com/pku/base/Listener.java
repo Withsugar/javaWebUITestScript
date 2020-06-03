@@ -14,6 +14,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 
+
 public class Listener extends TestListenerAdapter {
 	public static String locator = null;
 	public static String type = null;
@@ -24,15 +25,6 @@ public class Listener extends TestListenerAdapter {
 	@Override
 	public void onTestFailure(ITestResult tr) {
         super.onTestFailure(tr);
-//        TestBase bt = (TestBase) tr.getInstance();
-//        System.out.println("====================print"+bt);
-//        WebDriver driver = bt.getDriver();
-//        takePhoto(driver);
-//        logCaseStep(tr);
-//        exceptedResult(tr);
-
-
-//		super.onTestFailure(tr);
 		SimpleDateFormat df = new SimpleDateFormat("MMddHHmmss");
 		jpgName = tr.getName()+"_"+df.format(new Date()).toString();
 		//收集log

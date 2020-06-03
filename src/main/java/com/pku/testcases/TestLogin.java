@@ -1,5 +1,6 @@
 package com.pku.testcases;
 
+import com.pku.base.Retry;
 import com.pku.base.TestBase;
 import com.pku.data.LoginDataProvider;
 import com.pku.page.HomePage;
@@ -50,7 +51,7 @@ public class TestLogin extends TestBase {
         info("退出登录");
         page(LoginPage.class).logout();
         //断言
-        Assert.assertEquals("登录",page(HomePage.class).getLoginBtnName());
+        Assert.assertEquals("登1录",page(HomePage.class).getLoginBtnName());
         info("退出断言成功");
     }
 

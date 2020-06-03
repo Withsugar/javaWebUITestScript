@@ -36,17 +36,14 @@ public class TestBase {
     public static Source source = null;
     public static ArrayList<String> proList = new ArrayList<String>();//存储所有测试过程中创建的项目Id，用于测试后删除项目
 
-    public WebDriver getDriver(){
-        return WebDriverRunner.getWebDriver();
-    }
 
     @BeforeSuite
     public void init() {
         System.setProperty("webdriver.chrome.driver", "src//main//resources//chromedriver.exe");
         System.setProperty("selenide.browser", "Chrome");
         Configuration.startMaximized=true;
-        Configuration.screenshots=true;
         ScreenShooter.captureSuccessfulTests=false;//设为true时，不管用例成功失败都截图，false时，只有失败时才会截图
+        Configuration.reportsFolder = "screenshot";
 
         initConfig();
         initLogger();

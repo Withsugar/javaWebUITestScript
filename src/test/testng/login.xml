@@ -6,18 +6,16 @@
         <listener class-name="com.pku.base.Listener"/>
     </listeners>
 
-    <!--<test name="登录" preserve-order="true">-->
-        <!--&lt;!&ndash; 这里是要调试的测试类  &ndash;&gt;-->
-        <!--<classes>-->
-            <!--<class name="com.pku.testcases.TestLogin"/>-->
-        <!--</classes>-->
-    <!--</test>-->
-
     <test name="登录">
         <classes>
-            <class name="com.pku.testcases.TestLogin"/>
             <class name="com.pku.testcases.MessageBuilderTests"/>
+            <class name="com.pku.testcases.TestLogin">
+                <methods>
+                    <include name="testLogin"/>
+                    <!--<include name="secondMethod"/>-->
+                    <!--<include name="thirdMethod"/>-->
+                </methods>
+            </class>
         </classes>
     </test>
-
 </suite>
