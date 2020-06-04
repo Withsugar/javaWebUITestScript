@@ -10,6 +10,6 @@
         <suite-file path="prepayment.xml"></suite-file>  -->
     </suite-files>
     <listeners>
-        <listener class-name="com.pku.base.RetryListener "/>
+        <!--<listener class-name="com.pku.base.RetryListener "/>-->
     </listeners>
 </suite>

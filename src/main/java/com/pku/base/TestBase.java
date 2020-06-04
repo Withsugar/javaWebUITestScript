@@ -27,7 +27,7 @@ import java.util.Properties;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.page;
 
-@Listeners({Listener.class})
+@Listeners({Listener.class, ScreenShooter.class})
 public class TestBase {
     public static String logName;
     public static Properties config = null;
@@ -36,13 +36,18 @@ public class TestBase {
     public static Source source = null;
     public static ArrayList<String> proList = new ArrayList<String>();//存储所有测试过程中创建的项目Id，用于测试后删除项目
 
+    WebDriver driver;
+
+    public WebDriver getWebDriver() {
+        return driver = WebDriverRunner.getWebDriver();
+    }
 
     @BeforeSuite
     public void init() {
         System.setProperty("webdriver.chrome.driver", "src//main//resources//chromedriver.exe");
         System.setProperty("selenide.browser", "Chrome");
-        Configuration.startMaximized=true;
-        ScreenShooter.captureSuccessfulTests=false;//设为true时，不管用例成功失败都截图，false时，只有失败时才会截图
+        Configuration.startMaximized = true;
+        ScreenShooter.captureSuccessfulTests = false;//设为true时，不管用例成功失败都截图，false时，只有失败时才会截图
         Configuration.reportsFolder = "screenshot";
 
         initConfig();
@@ -161,10 +166,10 @@ public class TestBase {
     /**
      * 除登录测试外，其他测试前的登录操作
      */
-    public static void login(){
+    public static void login() {
         info("登录");
-        HomePage homePage=open(config.getProperty("webSite"), HomePage.class);
+        HomePage homePage = open(config.getProperty("webSite"), HomePage.class);
         homePage.loginBtn();
-        page(LoginPage.class).login(config.getProperty("username"),config.getProperty("password"));
+        page(LoginPage.class).login(config.getProperty("username"), config.getProperty("password"));
     }
 }

@@ -1,9 +1,6 @@
 package com.pku.base;
 
 import io.qameta.allure.Attachment;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestNGMethod;
 import org.testng.ITestResult;
@@ -36,12 +33,6 @@ public class Listener extends TestListenerAdapter {
 		TestBase.info("失败原因为："+tr.getThrowable().getMessage());
 		TestBase.info("=======================================================");
 	}
-
-    @Attachment(value = "失败截图如下：",type = "screenshot")
-    public byte[]  takePhoto(WebDriver driver){
-        byte[] screenshotAs = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
-        return screenshotAs;
-    }
 
     /**
      * 打印测试步骤

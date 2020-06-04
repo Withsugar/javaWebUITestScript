@@ -8,7 +8,7 @@
 
     <test name="登录">
         <classes>
-            <class name="com.pku.testcases.MessageBuilderTests"/>
+            <!--<class name="com.pku.testcases.MessageBuilderTests"/>-->
             <class name="com.pku.testcases.TestLogin">
                 <methods>
                     <include name="testLogin"/>
